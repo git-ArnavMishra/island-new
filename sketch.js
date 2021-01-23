@@ -11,7 +11,7 @@ function preload(){
 }
 function setup() {
   createCanvas(displayWidth-200,displayHeight-240);
-  
+  //;
   man = new Man();
   playButton = createSprite((displayWidth-200)/2,displayHeight-440);
   playButton.addImage(playButtonImage);
