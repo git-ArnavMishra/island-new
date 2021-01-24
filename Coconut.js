@@ -1,6 +1,6 @@
-class Man {
-    constructor(x, y,w,h) {
-        this.image = loadImage("Images/Man.png");
+class Coconut {
+    constructor(x,y,w,h) {
+        this.image = loadImage("Images/Vovonut.png");
         this.x = x;
         this.y = y;
         this.w = w;

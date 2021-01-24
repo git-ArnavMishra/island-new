@@ -1,6 +1,6 @@
-class Man {
+class Water {
     constructor(x, y,w,h) {
-        this.image = loadImage("Images/Man.png");
+        this.image = loadImage("Images/Bottle.png");
         this.x = x;
         this.y = y;
         this.w = w;
