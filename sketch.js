@@ -1,4 +1,3 @@
-var topImage;
 var man;
 var lion1;
 var lion2;
@@ -11,19 +10,26 @@ var coconut1;
 var coconut2;
 var coconut3;
 var cellphone;
-var gameState = 0;
+var gameState = 1;
 var playButton;
 var playButtonImage;
 var dltMapIMG;
+var bg;
+var cam;
+
 function preload(){
-  topImage = loadImage("Images/Islandasdf.jpg");
   playButtonImage = loadImage("Images/playButton.jpg");
-  dtlMapIMG = loadImage("Images/dtlMap.png");
+  //dtlMapIMG = loadImage("Images/dtlMap.png");
+
 }
 function setup() {
   createCanvas(displayWidth-200,displayHeight-240);
+  //topImageSprite = createSprite((displayWidth-200)/2, (displayHeight-200)/2,displayWidth-200,displayHeight-240);
+   
+  //image(topImage, (displayWidth-200)/2, (displayHeight-200)/2,displayWidth-200,displayHeight-240);
+  bg = new Bg((displayWidth-200)/2, (displayHeight-200)/2,displayWidth-200,displayHeight-240);
   man = new Man(400,400,80,80);
-  lion1 = new Lion(800,160,80,80);
+    lion1 = new Lion(800,160,80,80);
   lion2 = new Lion(1000,500,80,80);
   lion3 = new Lion(480,100,80,80);
   lion4 = new Lion(1200,400,80,80);
@@ -37,16 +43,53 @@ function setup() {
   playButton = createSprite((displayWidth-200)/2,displayHeight-440);
   playButton.addImage(playButtonImage);
   playButton.scale = 0.5;
+  //cam = createCamera();
+  //cam.pan(-0.8);
+
 }
 
 
 
 function draw() {
-  background(topImage);
-  if(gameState===0){
+  background(0,0,0);
+  if(gameState===1){
+   // topImageSprite = createSprite((displayWidth-200)/2, (displayHeight-200)/2,displayWidth-200,displayHeight-240);
+    //topImageSprite.addImage('BG', topImage);
+    bg.display();
+
     textSize(100);
-    text("The Island",200,200);
+    //text("The Island",200,200);
+
     man.display();
+
+    lion1.display();
+    lion2.display();
+    lion3.display();
+    lion4.display();
+    water1.display();   
+
+    water2.display(); 
+    water3.display();
+    coconut1.display();
+    coconut2.display();
+    coconut3.display();
+    cellphone.display();
+
+
+    
+
+    if(mousePressedOver(playButton)){
+      gameState = 2;
+      camera.zoom = camera.zoom + 5;
+      playButton.destroy();
+      
+    }
+  }
+    if(gameState===2){
+      bg.display();
+
+      man.display();
+      
     lion1.display();
     lion2.display();
     lion3.display();
@@ -58,18 +101,22 @@ function draw() {
     coconut2.display();
     coconut3.display();
     cellphone.display();
-
-    if(mousePressedOver(playButton)){
-      gameState = 1;
-      playButton.destroy();
+    camera.position.x = man.x ;
+    camera.position.y = man.y ;
+    if(keyCode == 97 || keyCode == 65){
+      man.y = man.y - 2;
+      console.log(man.y);
     }
-  }
-  else if(gameState===1){
-    console.log("asdf");
-    background(dltMapIMG);
-  } 
-  else if(gameState===2){
+    if(keyCode == UP_ARROW){
+      man.y = man.y - 2;
+      console.log(man.y);
+    }   
 
-  } 
+    
+    
+    //plane(10,10);
+    }
+  
+
   drawSprites();
 }
