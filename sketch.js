@@ -60,7 +60,6 @@ function draw() {
     textSize(100);
     //text("The Island",200,200);
 
-    man.display();
 
     lion1.display();
     lion2.display();
@@ -74,6 +73,7 @@ function draw() {
     coconut2.display();
     coconut3.display();
     cellphone.display();
+    man.display();
 
 
     
@@ -88,7 +88,7 @@ function draw() {
     if(gameState===2){
       bg.display();
 
-      man.display();
+      
       
     lion1.display();
     lion2.display();
@@ -101,16 +101,24 @@ function draw() {
     coconut2.display();
     coconut3.display();
     cellphone.display();
+    man.display();
     camera.position.x = man.x ;
     camera.position.y = man.y ;
     if(keyCode == 97 || keyCode == 65){
       man.y = man.y - 2;
-      console.log(man.y);
     }
     if(keyCode == UP_ARROW){
       man.y = man.y - 2;
-      console.log(man.y);
     }   
+    if(keyCode == DOWN_ARROW){
+      man.y = man.y + 2;
+    }   
+    if(keyCode == LEFT_ARROW){
+      man.x = man.x - 2;
+    }   
+    if(keyCode == RIGHT_ARROW){
+      man.x = man.x + 2;    }   
+
 
     
     
