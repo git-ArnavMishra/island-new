@@ -21,7 +21,7 @@ var cam;
 function preload(){
   playButtonImage = loadImage("Images/playButton.jpg");
   //dtlMapIMG = loadImage("Images/dtlMap.png");
-
+  
 }
 function setup() {
   createCanvas(displayWidth-200,displayHeight-240);
@@ -35,12 +35,12 @@ function setup() {
   lion2 = new Lion(1000,500,80,80);
   lion3 = new Lion(480,100,80,80);
   lion4 = new Lion(1200,400,80,80);
-  water1 = new Water(1300,300,25,50);
-  water2 = new Water(800,500,25,50);
-  water3 = new Water(900,280,25,50);
-  coconut1 = new Coconut(700,280,100,70);
-  coconut2 = new Coconut(800,300,100,70);
-  coconut3 = new Coconut(900,200,100,70);
+  water1 = new Water(1300,300,25,50,100);
+  water2 = new Water(800,500,25,50,100);
+  water3 = new Water(900,280,25,50,100);
+  coconut1 = new Coconut(700,280,100,70,100);
+  coconut2 = new Coconut(800,300,100,70,100);
+  coconut3 = new Coconut(900,200,100,70,100);
   cellphone = new Cellphone(1000,400,100,70);
   playButton = createSprite((displayWidth-200)/2,displayHeight-440);
   playButton.addImage(playButtonImage);
@@ -90,6 +90,11 @@ function draw() {
           bar.weaken();
         }
       }
+      if((Math.abs(man.y-coconut1.y)<90) && (Math.abs(man.x-coconut1.x)<90)) { 
+        if(!bar.isstengthened()){
+          bar.stengthen();
+         }
+      }
 
       
       
@@ -135,14 +140,13 @@ function draw() {
         bar.x = bar.x - 2;
       }   
       if(keyCode == RIGHT_ARROW){
-        bar.x = bar.x + 2;    }   
+        bar.x = bar.x + 2;
+      }   
 
 
     
     
  
     }
-  
-
   drawSprites();
 }

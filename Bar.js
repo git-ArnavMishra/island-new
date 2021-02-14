@@ -12,6 +12,7 @@ class Bar {
         this.h = h;
         this.l = l;
         this.alreadyweakened = false;
+        this.alreadystrengthened = false;
 
     }
     display(){    
@@ -41,4 +42,13 @@ class Bar {
     isweakened(){    
       return this.alreadyweakened;
     }
+    strengthen(){    
+      this.l = (this.l)+20;
+      this.alreadystrengthened = true;
+    }
+    isstrengthened(){    
+      return this.alreadystrengthened;
+    }
+    //;
+    
   }
