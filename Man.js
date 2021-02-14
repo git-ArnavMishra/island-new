@@ -10,4 +10,6 @@ class Man {
       imageMode(CENTER);
           image(this.image,this.x,this.y,this.w,this.h);
     }
+    
+    
   }

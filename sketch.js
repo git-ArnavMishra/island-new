@@ -2,6 +2,7 @@ var man;
 var lion1;
 var lion2;
 var lion3;
+var bar;
 var lion4;
 var water1;
 var water2;
@@ -29,7 +30,8 @@ function setup() {
   //image(topImage, (displayWidth-200)/2, (displayHeight-200)/2,displayWidth-200,displayHeight-240);
   bg = new Bg((displayWidth-200)/2, (displayHeight-200)/2,displayWidth-200,displayHeight-240);
   man = new Man(400,400,80,80);
-    lion1 = new Lion(800,160,80,80);
+  lion1 = new Lion(800,160,80,80);
+  bar = new Bar((man.x)-80,(man.y)+50,100,8,100);
   lion2 = new Lion(1000,500,80,80);
   lion3 = new Lion(480,100,80,80);
   lion4 = new Lion(1200,400,80,80);
@@ -43,12 +45,7 @@ function setup() {
   playButton = createSprite((displayWidth-200)/2,displayHeight-440);
   playButton.addImage(playButtonImage);
   playButton.scale = 0.5;
-  //cam = createCamera();
-  //cam.pan(-0.8);
-
 }
-
-
 
 function draw() {
   background(0,0,0);
@@ -76,7 +73,8 @@ function draw() {
     man.display();
 
 
-    
+
+
 
     if(mousePressedOver(playButton)){
       gameState = 2;
@@ -87,6 +85,11 @@ function draw() {
   }
     if(gameState===2){
       bg.display();
+      if ((Math.abs(man.y-lion1.y)<90) && (Math.abs(man.x-lion1.x)<90)) { 
+        if(!bar.isweakened()){
+          bar.weaken();
+        }
+      }
 
       
       
@@ -102,10 +105,13 @@ function draw() {
     coconut3.display();
     cellphone.display();
     man.display();
+    bar.display();
+
+    
     camera.position.x = man.x ;
     camera.position.y = man.y ;
     if(keyCode == 97 || keyCode == 65){
-      man.y = man.y - 2;
+      man.y = man.y - 2;  
     }
     if(keyCode == UP_ARROW){
       man.y = man.y - 2;
@@ -118,11 +124,23 @@ function draw() {
     }   
     if(keyCode == RIGHT_ARROW){
       man.x = man.x + 2;    }   
+      //;
+      if(keyCode == UP_ARROW){
+        bar.y = bar.y - 2;
+      }   
+      if(keyCode == DOWN_ARROW){
+        bar.y = bar.y + 2;
+      }   
+      if(keyCode == LEFT_ARROW){
+        bar.x = bar.x - 2;
+      }   
+      if(keyCode == RIGHT_ARROW){
+        bar.x = bar.x + 2;    }   
 
 
     
     
-    //plane(10,10);
+ 
     }
   
 
