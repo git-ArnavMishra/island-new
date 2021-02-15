@@ -1,5 +1,5 @@
 class Coconut {
-    constructor(x,y,w,h) {
+    constructor(x,y,w,h,l) {
         this.image = loadImage("Images/Vovonut.png");
         this.x = x;
         this.y = y;
@@ -10,6 +10,9 @@ class Coconut {
     display(){    
       imageMode(CENTER);
           image(this.image,this.x,this.y,this.w,this.h);
+    }
+    destroy() {
+      this.invisible()
     }
     
   }
